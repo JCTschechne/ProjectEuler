@@ -67,4 +67,6 @@ def number_to_word(n):
         digits -= 1
     return result
 
+if __name__ == "__main__":
+    print(number_to_word(999))
 
