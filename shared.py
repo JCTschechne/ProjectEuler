@@ -1,5 +1,8 @@
 from math import sqrt
 
+def number_to_digits(number):
+    return [int(x) for x in str(number)]
+
 def is_prime(n):
     return n > 1 and all(n % i for i in range(2, int(n ** 0.5) + 1))
 
