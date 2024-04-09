@@ -11,3 +11,23 @@ For example, when the list is sorted into alphabetical order, COLIN,
 
 What is the total of all the name scores in the file?
 """
+
+
+def evaluate(c):
+    return ord(c.upper()) - 64
+
+
+def solve():
+    file = open("Res/0022_names.txt")
+    names = file.readline().replace('"', '').split(",")
+    names.sort()
+    score = 0
+
+    for i in range(len(names)):
+        score += (sum([evaluate(c) for c in names[i]]) * (i + 1))
+    return score
+
+
+if __name__ == "__main__":
+    print(problem)
+    print("Solution: ", solve())
