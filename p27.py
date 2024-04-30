@@ -1,3 +1,7 @@
+import math
+
+from shared import is_prime
+
 problem = """
 Euler discovered the remarkable quadratic formula:
   n^2 + n + 41  
@@ -21,8 +25,26 @@ that produces the maximum number of primes for consecutive values of n,
 starting with n = 0.
 """
 
+
+def calc_max_primes(a, b):
+    for n in range(1000):
+        if not is_prime(math.pow(n, 2) + a*n + b):
+            return n
+
+
 def solve():
-    pass
+    max_pair = (0,0)
+    max_primes = 0
+    # even numbers for a or b or both are not yielding primes
+    for a in range(-999, 1000, 2):
+        for b in range(-999, 1000, 2):
+            primes  = calc_max_primes(a, b)
+            if primes > max_primes:
+                max_primes = primes
+                max_pair = a, b
+    print(max_pair, max_primes)
+    a, b = max_pair
+    return a * b
 
 if __name__ == "__main__":
     print(problem)
