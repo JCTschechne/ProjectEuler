@@ -1,4 +1,5 @@
 import math
+from shared import number_to_digits
 
 problem = """
 Surprisingly there are only three numbers that can be written as the sum of fourth powers of their digits:
@@ -12,8 +13,16 @@ The sum of these numbers is  1634 + 8208 + 9474 = 19316.
 Find the sum of all the numbers that can be written as the sum of fifth powers of their digits.
 """
 
+
+
 def solve():
-    pass
+    sol = 0
+    for n in range(2,200000):
+        digits = number_to_digits(n)
+        digit_sum = sum([x**5 for x in digits])
+        if digit_sum == n:
+            sol += n
+    return sol
 
 if __name__ == "__main__":
     print(problem)
